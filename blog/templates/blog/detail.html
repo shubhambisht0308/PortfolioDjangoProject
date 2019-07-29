@@ -7,7 +7,7 @@
         <meta name="description" content="">
         <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
         <meta name="generator" content="Jekyll v3.8.5">
-        <title>Shubham Bisht</title>
+        <title>{{blog.title}}</title>
 
         <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
 
@@ -37,7 +37,7 @@
     <body>
         <header>
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <a class="navbar-brand" href="">Shubham Bisht</a>
+                <a class="navbar-brand" href="{% url 'homepage' %}">Shubham Bisht</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -45,7 +45,7 @@
                     <div class="navbar-nav ml-auto">
                         <a class="nav-item nav-link" href="http://twitter.com">Twitter</a>
                         <a class="nav-item nav-link" href="{% static 'My_CV.pdf' %}">Resume</a>
-                        <a class="nav-item nav-link" href="{% url 'allblogs' %}">Blog</a>
+                        <a class="nav-item nav-link active" href="{% url 'allblogs' %}">Blog</a>
                     </div>
                 </div>
             </nav>
@@ -53,36 +53,15 @@
 
         <main role="main">
 
-            <section class="jumbotron text-center">
-                <div class="container">
-                    <h1 class="jumbotron-heading">Hi, I'm Shubham</h1>
-                    <p class="lead text-muted">Hi, my name is Shubham. Currently I'm working on Django.</p>
-                    <p>
-                        <a href="mailto:shubh0395@gmail.com" class="btn btn-primary my-2">Email Me</a>
-                    </p>
-                    <br/>
-                    <img src="{% static 'Me.jpg' %}" width = "250" height = "200" style="transform:rotate(270deg);"/>
-                </div>
-            </section>
-
-            <div class="album py-5 bg-light">
-                <div class="container">
-
-                    <div class="row">
-                        {% for job in jobs.all %}
-                        <div class="col-md-4">
-                            <div class="card mb-4 shadow-sm">
-                                <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="{{job.image.url}}"/>
-                                <div class="card-body">
-                                    <p class="card-text"> {{ job.summary }} </p>
-                                </div>
-                            </div>
-                        </div>
-                        {% endfor %}
-                    </div>
-                </div>
+            <div class="container" align="center">
+                <h1 class="text-center pt-3">{{ blog.title }}</h1>
+                <br/>
+                <p><b>{{blog.pub_date_pretty}}</b></p>
+                <br>
+                <img class ="img-fluid text-center" src="{{ blog.image.url }}" height =600 width=600/>
+                <br/><br/>
+                <p>{{blog.body}}</p>
             </div>
-
         </main>
 
         <footer class="text-muted">
